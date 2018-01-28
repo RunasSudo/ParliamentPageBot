@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import praw
 from praw.exceptions import APIException
 from prawcore.exceptions import RequestException, NotFound, Forbidden
@@ -7,11 +9,9 @@ import re, math, logging, time
 import sys, os, traceback, signal
 
 class PageBot():
-	user_agent = "User-Agent:Parliament Pager:v2.3.2 (by /u/Zagorath)"
+	user_agent = "User-Agent:Parliament Pager:v2.3.2.1 (by /u/RunasSudo)"
 
 	def __init__(self):
-		reload(sys)
-		sys.setdefaultencoding('utf-8')
 		self.r = praw.Reddit('PageBot', user_agent=self.user_agent)
 		logging.basicConfig(
 			filename='pagebot.log',
@@ -180,7 +180,7 @@ class PageBot():
 				"Adding users to the to_page list from {}".format(subreddit))
 			for user in contents:
 				self.to_page.add(user)
-				if not isinstance(user, basestring):
+				if not isinstance(user, str):
 					logging.critical(
 						"Attempting to add '{}' to page list, not a str".format(user))
 		# If there is no pagelist page created
