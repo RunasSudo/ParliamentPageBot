@@ -49,6 +49,9 @@ class PageBot():
 		Accepts mod invites
 		"""
 		for self.message in self.r.inbox.unread():
+			self.message.mark_read()
+			self._log(logging.DEBUG, "Message marked unread")
+			
 			# Handle PMs. Mostly dealing with mod & approved submitter status
 			if isinstance(self.message, Message):
 				# If the message is a mod invitation, accept it
@@ -84,8 +87,6 @@ class PageBot():
 					if not stopped:
 						self._log(logging.INFO, "Unknown comment received")
 			self._log(logging.DEBUG, "Message dealt with")
-			self.message.mark_read()
-			self._log(logging.DEBUG, "Message marked unread")
 
 	def page(self):
 		"""From the current self.message, parse out the page order
