@@ -1,0 +1,12 @@
+[Unit]
+Description=ParliamentPageBot
+
+[Service]
+ExecStart=/usr/bin/python -u PageBot.py
+WorkingDirectory=/opt/ParliamentPageBot
+User=nobody
+Group=nobody
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

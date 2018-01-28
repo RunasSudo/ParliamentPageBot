@@ -14,7 +14,6 @@ class PageBot():
 	def __init__(self):
 		self.r = praw.Reddit('PageBot', user_agent=self.user_agent)
 		logging.basicConfig(
-			filename='pagebot.log',
 			level=logging.INFO,
 			format='%(asctime)s - %(levelname)s - %(message)s'
 		)
